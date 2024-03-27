@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 03:05:43 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/27 00:51:39 by nbenyahy         ###   ########.fr       */
+/*   Created: 2024/03/26 22:43:11 by nbenyahy          #+#    #+#             */
+/*   Updated: 2024/03/26 22:45:09 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unistd.h"
-#include "stdlib.h"
-#include "stdbool.h"
-#include "stdio.h"
-#include "string.h"
+#include "push_swap.h"
 
-typedef struct s_stack {
-	int				nbr;
-	struct s_stack	*next;
-}	t_stack;
+void	push(t_var *a, t_var *b)
+{
+	t_stack	*node;
 
-typedef struct s_var {
-	int		size;
-	t_stack	*head;
-}	t_var;
+	if (a->head == NULL)
+		return ;
+	node = a->head;
+	a->head = a->head->next;
+	node->next = b->head;
+	b->head = node; 
+	a->size--;
+	b->size++;
+}
 
-// Operations
-void	push(t_var *a, t_var *b);
-void	rotate(t_var *a);
+void	rotate(t_var *a)
+{
+	t_stack	*tmp;
 
-//helpers fun
-bool	is_sorted(t_var *a);
+	tmp = a->head;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = a->head;
+	a->head = a->head->next;
+	tmp->next->next = NULL;
+}

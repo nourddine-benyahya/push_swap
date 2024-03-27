@@ -1,0 +1,15 @@
+POST https://bus-med.1337.ma/create-reservation
+Content-Type: application/json
+Cookie: csrftoken=M1RMhINumVC7Ur5sEotqr5vfeeDBzLIE; sessionid=w5gmrchi6sc6lfveqw20cn774a5u3roi; login_state=EOIVIW2M0E0IOHPSILTONSK
+
+{
+    "csrfmiddlewaretoken" : "vLZfpYjjRdVZUmQz6CHUxugTDDN064p27CGRwwWD3YnWEDLRAQ0aOpBYHHgrvFXw",
+    "traget_id" :           "6",
+    "captcha_0" :	        "1fad6840c5922ec57764b83ea3eff8e3be20238f",
+    "captcha_1" :	        "IGQV"
+}
+
+###
+
+GET https://bus-med.1337.ma
+Cookie: csrftoken=M1RMhINumVC7Ur5sEotqr5vfeeDBzLIE; sessionid=w5gmrchi6sc6lfveqw20cn774a5u3roi; login_state=EOIVIW2M0E0IOHPSILTONSK
