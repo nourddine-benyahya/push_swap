@@ -6,7 +6,7 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 03:05:43 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/27 00:51:39 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/03/28 00:26:38 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ typedef struct s_var {
 }	t_var;
 
 // Operations
-void	push(t_var *a, t_var *b);
-void	rotate(t_var *a);
+void	push(t_var *a, t_var *b, char *mv);
+void	swap(t_var *a, char *mv);
+void	rrotate(t_var *a, char *mv);
+void	rotate(t_var *a, char *mv);
 
 //helpers fun
 bool	is_sorted(t_var *a);

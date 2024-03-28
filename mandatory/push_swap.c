@@ -6,7 +6,7 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 03:05:46 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/27 00:50:44 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/03/28 00:26:06 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,25 +79,45 @@ void	move_everything_to_b(t_var *a, t_var *b)
 	{
 		navg = avg(a);
 		if (a->head->nbr >= navg)
-		{
-			rotate(a);
-			printf("ra\n");
-		}
+			rotate(a, "ra\n");
 		else
-		{
-			push(a, b);
-			printf("pb\n");
-		}
+			push(a, b, "pb\n");
+
 	}
 }
 
+void	sort_3(t_var *a)
+{
+	int	first;
+	int	second;
+	int	third;
 
+	first = a->head->nbr;
+	second = a->head->next->nbr;
+	third = a->head->next->next->nbr;
+	if (first > second && second < third && first < third)
+		swap(a, "sa\n");
+	else if (first > second && second > third && first > third)
+	{
+		swap(a, "sa\n");
+		rrotate(a, "rra\n");
+	}
+	else if (first > second && second < third)
+		rotate(a, "ra\n");
+	else if (first < second && second > third && first < third)
+	{
+		swap(a, "sa\n");
+		rotate(a, "ra\n");
+	}
+	else if (first < second && second > third)
+		rrotate(a, "rra\n");
+}
 
-// void	sort_5_numbers(t_var *a)
+// void	sort_5(t_var *a, t_var *b)
 // {
-// 	int	arr_a[5];
-// 	int	arr_b[5];
-// 	temp
+// 	pb(a, b);
+// 	pb(a, b);
+
 // }
 
 int	main(int argc, char *argv[])
@@ -110,12 +130,13 @@ int	main(int argc, char *argv[])
 	var_b->head = NULL;
 	var_b->size = 0;
 	init_stack(var_a, argv + 1);
-	
+	sort_3(var_a);
+	// rrotate(var_a);
 	// pb(var_a, var_b);
 	// pb(var_a, var_b);
 	// pb(var_a, var_b);
 	// pb(var_b, var_a);
-	move_everything_to_b(var_a, var_b);
+	// move_everything_to_b(var_a, var_b);
 	// printf("<%d><%d>" ,var_a->head->nbr,var_b->head->nbr);
 	// free_list(var_a);
 	// free_list(var_b);
@@ -124,16 +145,15 @@ int	main(int argc, char *argv[])
 	// system("leaks a.out");
 	// printf("%f\n",avg(var_a));
 	
-	// t_stack *tmp;
-	// printf("stack a\n");
+	t_stack *tmp;
+	printf("stack a\n");
 
-	// tmp = var_a->head;
-	// while (tmp)
-	// {
-	// 	printf("<%d>\n",tmp->nbr);
-	// 	tmp = tmp->next;
-	// }
-
+	tmp = var_a->head;
+	while (tmp)
+	{
+		printf("<%d>\n",tmp->nbr);
+		tmp = tmp->next;
+	}
 	// printf("stack b\n");
 	// tmp = var_b->head;
 	// while (tmp)
