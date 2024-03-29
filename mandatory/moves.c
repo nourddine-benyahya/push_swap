@@ -6,7 +6,7 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 22:43:11 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/28 00:27:58 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/03/29 01:36:22 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,3 @@ void	rrotate(t_var *a, char *mv)
 	if (mv)
 		write(1, mv, 4);
 }
-

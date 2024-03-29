@@ -6,24 +6,11 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 03:05:46 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/28 00:26:06 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/03/29 01:10:44 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_list(t_var *a)
-{
-	t_stack	*tmp;
-
-	while (a->head)
-	{
-		tmp = a->head;
-		a->head = a->head->next;
-		free(tmp);
-	}
-	free(a);
-}
 
 int	init_stack(t_var *var_a, char **str)
 {
@@ -52,108 +39,43 @@ int	init_stack(t_var *var_a, char **str)
 	return (0);
 }
 
-float	avg(t_var *a)
-{
-	float	sum;
-	float	res;
-	t_stack *tmp;
 
-	sum = 0;
-	res = 0;
-	tmp = a->head;
 
-	while (tmp)
-	{
-		sum += tmp->nbr;
-		tmp = tmp->next;
-	}
-	res = sum / a->size;
-	return (res);
-}
 
-void	move_everything_to_b(t_var *a, t_var *b)
-{
-	float	navg;
 
-	while (a->size != 5)
-	{
-		navg = avg(a);
-		if (a->head->nbr >= navg)
-			rotate(a, "ra\n");
-		else
-			push(a, b, "pb\n");
-
-	}
-}
-
-void	sort_3(t_var *a)
-{
-	int	first;
-	int	second;
-	int	third;
-
-	first = a->head->nbr;
-	second = a->head->next->nbr;
-	third = a->head->next->next->nbr;
-	if (first > second && second < third && first < third)
-		swap(a, "sa\n");
-	else if (first > second && second > third && first > third)
-	{
-		swap(a, "sa\n");
-		rrotate(a, "rra\n");
-	}
-	else if (first > second && second < third)
-		rotate(a, "ra\n");
-	else if (first < second && second > third && first < third)
-	{
-		swap(a, "sa\n");
-		rotate(a, "ra\n");
-	}
-	else if (first < second && second > third)
-		rrotate(a, "rra\n");
-}
-
-// void	sort_5(t_var *a, t_var *b)
-// {
-// 	pb(a, b);
-// 	pb(a, b);
-
-// }
 
 int	main(int argc, char *argv[])
 {
 	t_var	*var_a;
 	t_var	*var_b;
+
 	var_a = malloc(sizeof(t_var));
 	var_b = malloc(sizeof(t_var));
 	var_b->head = NULL;
 	var_b->head = NULL;
 	var_b->size = 0;
 	init_stack(var_a, argv + 1);
-	sort_3(var_a);
-	// rrotate(var_a);
-	// pb(var_a, var_b);
-	// pb(var_a, var_b);
-	// pb(var_a, var_b);
-	// pb(var_b, var_a);
-	// move_everything_to_b(var_a, var_b);
-	// printf("<%d><%d>" ,var_a->head->nbr,var_b->head->nbr);
-	// free_list(var_a);
-	// free_list(var_b);
+
+	if (var_a->size <= 5)
+		small_stack(var_a, var_b);
+	else
+		large_stack(var_a, var_b);
 
 
-	// system("leaks a.out");
-	// printf("%f\n",avg(var_a));
-	
-	t_stack *tmp;
-	printf("stack a\n");
 
-	tmp = var_a->head;
-	while (tmp)
-	{
-		printf("<%d>\n",tmp->nbr);
-		tmp = tmp->next;
-	}
+
+
+	// //print stack a to check if sorted
+	// printf("stack a :\n");
+	// t_stack	*tmp;
+	// tmp = var_a->head;
+	// while (tmp)
+	// {
+	// 	printf("<%d>\n", tmp->nbr);
+	// 	tmp = tmp->next;
+	// }
+
+	// //print stack b
 	// printf("stack b\n");
 	// tmp = var_b->head;
 	// while (tmp)
@@ -161,4 +83,7 @@ int	main(int argc, char *argv[])
 	// 	printf("<%d>\n",tmp->nbr);
 	// 	tmp = tmp->next;
 	// }
+
+	free_list(var_a);
+	free_list(var_b);
 }
