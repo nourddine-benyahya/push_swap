@@ -6,7 +6,7 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 03:05:46 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/29 01:10:44 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/03/30 08:58:20 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,33 +39,26 @@ int	init_stack(t_var *var_a, char **str)
 	return (0);
 }
 
-
-
-
-
-
 int	main(int argc, char *argv[])
 {
 	t_var	*var_a;
 	t_var	*var_b;
 
+	if (argc == 1)
+		return (1);
 	var_a = malloc(sizeof(t_var));
 	var_b = malloc(sizeof(t_var));
 	var_b->head = NULL;
 	var_b->head = NULL;
 	var_b->size = 0;
-	init_stack(var_a, argv + 1);
-
+	parsing(argv, var_a);
+	// init_stack(var_a, argv + 1);
 	if (var_a->size <= 5)
 		small_stack(var_a, var_b);
 	else
 		large_stack(var_a, var_b);
-
-
-
-
-
-	// //print stack a to check if sorted
+	
+	//print stack a to check if sorted
 	// printf("stack a :\n");
 	// t_stack	*tmp;
 	// tmp = var_a->head;
@@ -74,7 +67,6 @@ int	main(int argc, char *argv[])
 	// 	printf("<%d>\n", tmp->nbr);
 	// 	tmp = tmp->next;
 	// }
-
 	// //print stack b
 	// printf("stack b\n");
 	// tmp = var_b->head;
@@ -83,7 +75,7 @@ int	main(int argc, char *argv[])
 	// 	printf("<%d>\n",tmp->nbr);
 	// 	tmp = tmp->next;
 	// }
-
+	
 	free_list(var_a);
 	free_list(var_b);
 }

@@ -6,7 +6,7 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 00:50:45 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/29 06:16:31 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/03/29 08:04:30 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,4 @@ int	find_min(t_var *a)
 		tmp = tmp->next;
 	}
 	return (j);
-}
-
-int	calculate_moves(int index[2], t_var *a, t_var *b)
-{
-	int	a_moves;
-	int	b_moves;
-
-	if (index[0] < a->size / 2)
-		a_moves = index[0];
-	else
-		a_moves = a->size - index[0];
-	if (index[1] < b->size / 2)
-		b_moves = index[1];
-	else
-		b_moves = b->size - index[1];
-	return (a_moves + b_moves);
 }

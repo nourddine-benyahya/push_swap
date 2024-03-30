@@ -6,58 +6,11 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 02:02:37 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/29 06:23:13 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/03/29 08:47:15 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	move_everything_to_b(t_var *a, t_var *b)
-{
-	float	navg;
-
-	while (a->size != 5)
-	{
-		navg = avg(a);
-		if (a->head->nbr >= navg)
-			rotate(a, "ra\n");
-		else
-			push(a, b, "pb\n");
-	}
-	small_stack(a, b);
-}
-
-void	optimizing_top_moves(int index[2], t_var *a, t_var *b)
-{
-	while (index[1] > 0 && index[0] > 0)
-	{
-		rotate(a, NULL);
-		rotate(b, NULL);
-		write(1, "rr\n", 3);
-		index[1]--;
-		index[0]--;
-	}
-	while (index[0]-- > 0)
-		rotate(a, "ra\n");
-	while (index[1]-- > 0)
-		rotate(b, "rb\n");
-}
-
-void	optimizing_bottom_moves(int index[2], t_var *a, t_var *b)
-{
-	while (index[0] < a->size  && index[1] < b->size)
-	{
-		rrotate(a, NULL);
-		rrotate(b, NULL);
-		write(1, "rrr\n", 4);
-		index[0]++;
-		index[1]++;
-	}
-	while (index[0]++ < a->size)
-		rrotate(a, "rra\n");
-	while (index[1]++ < b->size)
-		rrotate(b, "rrb\n");
-}
 
 void	move_it_to_top(int index[2], t_var *a, t_var *b)
 {
@@ -85,57 +38,58 @@ void	move_it_to_top(int index[2], t_var *a, t_var *b)
 	push(b, a, "pa\n");
 }
 
-// void	find_my_besty()
-// {
-	
-// }
+void	my_besty(t_var	*a, t_stack *b, t_v *vr)
+{
+	t_stack	*tmp_a;
+
+	tmp_a = a->head;
+	vr->tmp_index[0] = 0;
+	vr->res[1] = INT_MAX;
+	while (tmp_a)
+	{
+		vr->res[0] = tmp_a->nbr - b->nbr;
+		if (vr->res[0] > 0 && vr->res[0] < vr->res[1])
+		{
+			vr->res[1] = vr->res[0];
+			vr->index[0] = vr->tmp_index[0];
+			vr->index[1] = vr->tmp_index[1];
+		}
+		tmp_a = tmp_a->next;
+		vr->tmp_index[0]++;
+	}
+}
+
+void	save_moves(t_v *vr, t_var *a, t_var *b)
+{
+	vr->cost_moves[0] = calculate_moves(vr->index, a, b);
+	if (vr->cost_moves[0] < vr->cost_moves[1])
+	{
+		vr->cost_moves[1] = vr->cost_moves[0];
+		vr->best_index[1] = vr->index[1];
+		vr->best_index[0] = vr->index[0];
+	}
+}
 
 void	find_best_friend(t_var *a, t_var *b)
 {
-	t_stack	*tmp_a;
 	t_stack	*tmp_b;
-	int		index[2];
-	int		mv_index[2];
-	int		cost_moves;
-	int		res[2];
-	int		tmp_index[2];
-	int		tmp_cost_moves;
+	t_v		vr;
 
-	tmp_index[1] = 0;
-	index[0] = 0;
-	index[1] = 0;
-	res[0] = 0;
-	res[1] = 0;
-	cost_moves = INT_MAX;
+	vr.tmp_index[1] = 0;
+	vr.index[0] = 0;
+	vr.index[1] = 0;
+	vr.res[0] = 0;
+	vr.res[1] = 0;
+	vr.cost_moves[1] = INT_MAX;
 	tmp_b = b->head;
 	while (tmp_b)
 	{
-		tmp_index[0] = 0;
-		tmp_a = a->head;
-		res[1] = INT_MAX;
-		while (tmp_a)
-		{
-			res[0] = tmp_a->nbr - tmp_b->nbr;
-			if (res[0] > 0 && res[0] < res[1])
-			{
-				res[1] = res[0];
-				index[0] = tmp_index[0];
-				index[1] = tmp_index[1];
-			}
-			tmp_a = tmp_a->next;
-			tmp_index[0]++;
-		}
-		tmp_cost_moves = calculate_moves(index, a, b);
-		if (tmp_cost_moves < cost_moves)
-		{
-			cost_moves = tmp_cost_moves;
-			mv_index[1] = index[1];
-			mv_index[0] = index[0];
-		}
+		my_besty(a, tmp_b, &vr);
+		save_moves(&vr, a, b);
 		tmp_b = tmp_b->next;
-		tmp_index[1]++;
+		vr.tmp_index[1]++;
 	}
-	move_it_to_top(mv_index, a, b);
+	move_it_to_top(vr.best_index, a, b);
 }
 
 void	large_stack(t_var *a, t_var *b)
