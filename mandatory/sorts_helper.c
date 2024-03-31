@@ -6,11 +6,29 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 08:01:25 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/29 08:46:58 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/03/31 08:29:57 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+double	avg(t_var *a)
+{
+	long long int	sum;
+	double			res;
+	t_stack			*tmp;
+
+	sum = 0;
+	res = 0;
+	tmp = a->head;
+	while (tmp)
+	{
+		sum += tmp->nbr;
+		tmp = tmp->next;
+	}
+	res = sum / a->size;
+	return (res);
+}
 
 int	calculate_moves(int index[2], t_var *a, t_var *b)
 {
@@ -30,12 +48,12 @@ int	calculate_moves(int index[2], t_var *a, t_var *b)
 
 void	move_everything_to_b(t_var *a, t_var *b)
 {
-	float	navg;
+	double	navg;
 
 	while (a->size != 5)
 	{
 		navg = avg(a);
-		if (a->head->nbr >= navg)
+		if (a->head->nbr > navg)
 			rotate(a, "ra\n");
 		else
 			push(a, b, "pb\n");

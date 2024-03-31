@@ -6,37 +6,64 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 03:05:46 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/30 08:58:20 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/03/31 08:29:46 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	init_stack(t_var *var_a, char **str)
+void	free_list(t_var *a)
 {
-	int		i;
 	t_stack	*tmp;
 
-	i = 0;
-	var_a->head = malloc(sizeof(t_stack));
-	if (!var_a->head)
-		return (1);
-	tmp = var_a->head;
-	while (str[i])
+	while (a->head)
 	{
-		tmp -> nbr = atoi(str[i]);
-		if (str[i + 1] != NULL)
+		tmp = a->head;
+		a->head = a->head->next;
+		free(tmp);
+	}
+	free(a);
+}
+
+bool	is_sorted(t_var *a)
+{
+	t_stack	*tmp;
+	int		nbr_tmp;
+
+	tmp = a->head;
+	nbr_tmp = tmp->nbr;
+	while (tmp)
+	{
+		if (tmp->nbr < nbr_tmp)
+			return (false);
+		nbr_tmp = tmp->nbr;
+		tmp = tmp->next;
+	}
+	return (true);
+}
+
+int	find_min(t_var *a)
+{
+	int		tmp_nbr;
+	int		i;
+	int		j;
+	t_stack	*tmp;
+
+	tmp = a->head;
+	tmp_nbr = tmp->nbr;
+	i = 0;
+	j = i;
+	while (tmp)
+	{
+		if (tmp->nbr <= tmp_nbr)
 		{
-			tmp->next = malloc(sizeof(t_stack));
-			if (!tmp->next)
-				return (1);
-			tmp = tmp->next;
+			tmp_nbr = tmp->nbr;
+			j = i;
 		}
 		i++;
+		tmp = tmp->next;
 	}
-	var_a->size = i;
-	tmp->next = NULL;
-	return (0);
+	return (j);
 }
 
 int	main(int argc, char *argv[])
@@ -52,30 +79,12 @@ int	main(int argc, char *argv[])
 	var_b->head = NULL;
 	var_b->size = 0;
 	parsing(argv, var_a);
-	// init_stack(var_a, argv + 1);
+	if (is_sorted(var_a))
+		return (0);
 	if (var_a->size <= 5)
 		small_stack(var_a, var_b);
 	else
 		large_stack(var_a, var_b);
-	
-	//print stack a to check if sorted
-	// printf("stack a :\n");
-	// t_stack	*tmp;
-	// tmp = var_a->head;
-	// while (tmp)
-	// {
-	// 	printf("<%d>\n", tmp->nbr);
-	// 	tmp = tmp->next;
-	// }
-	// //print stack b
-	// printf("stack b\n");
-	// tmp = var_b->head;
-	// while (tmp)
-	// {
-	// 	printf("<%d>\n",tmp->nbr);
-	// 	tmp = tmp->next;
-	// }
-	
 	free_list(var_a);
 	free_list(var_b);
 }

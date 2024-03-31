@@ -6,13 +6,13 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 02:02:37 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/29 08:47:15 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/03/31 08:32:12 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	move_it_to_top(int index[2], t_var *a, t_var *b)
+static void	move_it_to_top(int index[2], t_var *a, t_var *b)
 {
 	if (index[0] <= a->size / 2 && index[1] <= b->size / 2
 		&& index[1] != 0 && index[0] != 0)
@@ -38,13 +38,13 @@ void	move_it_to_top(int index[2], t_var *a, t_var *b)
 	push(b, a, "pa\n");
 }
 
-void	my_besty(t_var	*a, t_stack *b, t_v *vr)
+static void	my_besty(t_var	*a, t_stack *b, t_v *vr)
 {
 	t_stack	*tmp_a;
 
 	tmp_a = a->head;
 	vr->tmp_index[0] = 0;
-	vr->res[1] = INT_MAX;
+	vr->res[1] = LLONG_MAX;
 	while (tmp_a)
 	{
 		vr->res[0] = tmp_a->nbr - b->nbr;
@@ -59,7 +59,7 @@ void	my_besty(t_var	*a, t_stack *b, t_v *vr)
 	}
 }
 
-void	save_moves(t_v *vr, t_var *a, t_var *b)
+static void	save_moves(t_v *vr, t_var *a, t_var *b)
 {
 	vr->cost_moves[0] = calculate_moves(vr->index, a, b);
 	if (vr->cost_moves[0] < vr->cost_moves[1])
@@ -70,7 +70,7 @@ void	save_moves(t_v *vr, t_var *a, t_var *b)
 	}
 }
 
-void	find_best_friend(t_var *a, t_var *b)
+static void	find_best_friend(t_var *a, t_var *b)
 {
 	t_stack	*tmp_b;
 	t_v		vr;

@@ -6,13 +6,13 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 00:51:11 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/28 03:00:35 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/03/31 08:31:14 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_3(t_var *a)
+static void	sort_3(t_var *a)
 {
 	int	first;
 	int	second;
@@ -39,7 +39,7 @@ void	sort_3(t_var *a)
 		rrotate(a, "rra\n");
 }
 
-void	sort_4(t_var *a, t_var *b)
+static void	sort_4(t_var *a, t_var *b)
 {
 	int		i;
 
@@ -58,7 +58,7 @@ void	sort_4(t_var *a, t_var *b)
 	push(b, a, "pa\n");
 }
 
-void	sort_5(t_var *a, t_var *b)
+static void	sort_5(t_var *a, t_var *b)
 {
 	int		i;
 
