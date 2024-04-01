@@ -1,7 +1,7 @@
 SRC =	mandatory/large_stack.c mandatory/moves.c mandatory/push_swap.c mandatory/small_stack.c \
 		mandatory/sorts_helper.c mandatory/parsing/parsing.c mandatory/parsing/parsing_helper.c 
 
-SRCB = bonus/parsing/parsing.c bonus/parsing/parsing_helper.c bonus/checker.c
+SRCB = bonus/parsing/parsing.c bonus/parsing/parsing_helper.c bonus/checker.c bonus/move_it.c bonus/moves.c
 
 CC = cc
 
@@ -19,11 +19,11 @@ all : $(NAME)
 
 $(NAME) : $(SRC) $(HEADER)
 	make -C ./super_libft all
-	$(CC) $(CFLAGS) $(SRC) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRC) $(LIBFT) -o $(NAME) -fsanitize=address -g
 
 bonus : $(SRC) $(HEADERB)
 	make -C ./super_libft all
-	$(CC) $(CFLAGS) $(SRCB) $(LIBFT) -o $(NAMEB)
+	$(CC) $(CFLAGS) $(SRCB) $(LIBFT) -o $(NAMEB) -fsanitize=address -g
 
 clean : 
 	make -C ./super_libft clean

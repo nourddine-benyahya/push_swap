@@ -6,17 +6,15 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 03:05:43 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/31 09:01:38 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/04/01 03:23:33 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "unistd.h"
-#include "stdlib.h"
-#include "stdbool.h"
-#include "stdio.h"
-#include "string.h"
-#include "limits.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include "libft.h"
+# include "stdbool.h"
 
 typedef struct s_v{
 	int					index[2];
@@ -60,3 +58,5 @@ int		calculate_moves(int index[2], t_var *a, t_var *b);
 void	move_everything_to_b(t_var *a, t_var *b);
 void	optimizing_top_moves(int index[2], t_var *a, t_var *b);
 void	optimizing_bottom_moves(int index[2], t_var *a, t_var *b);
+
+#endif

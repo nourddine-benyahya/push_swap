@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 09:09:04 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/31 09:44:44 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/04/01 01:40:40 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
 void	free_list(t_var *a)
 {
@@ -57,20 +57,9 @@ bool	is_sorted(t_var *a)
 	return (true);
 }
 
-int	main(int argc, char **argv)
+void	read_moves(t_var *var_a, t_var *var_b)
 {
-	t_var	*var_a;
-	t_var	*var_b;
 	char	*move;
-
-	if (argc == 1)
-		return (1);
-	var_a = malloc(sizeof(t_var));
-	var_b = malloc(sizeof(t_var));
-	var_b->head = NULL;
-	var_b->head = NULL;
-	var_b->size = 0;
-	parsing(argv, var_a);
 
 	while (1)
 	{
@@ -88,9 +77,25 @@ int	main(int argc, char **argv)
 			write(2, "Error\n", 6);
 			exit(1);
 		}
-		printf("%s\n", move);
+		move_it(move, var_a, var_b);
 		free(move);
 	}
+}
+
+int	main(int argc, char **argv)
+{
+	t_var	*var_a;
+	t_var	*var_b;
+
+	if (argc == 1)
+		return (1);
+	var_a = malloc(sizeof(t_var));
+	var_b = malloc(sizeof(t_var));
+	var_b->head = NULL;
+	var_b->head = NULL;
+	var_b->size = 0;
+	parsing(argv, var_a);
+	read_moves(var_a, var_b);
 	if (is_sorted(var_a) && var_b->size == 0)
 		write(1, "OK\n", 3);
 	else

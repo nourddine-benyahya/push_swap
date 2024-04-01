@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 09:01:26 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/03/31 09:43:19 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/04/01 03:20:16 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "unistd.h"
-#include "stdlib.h"
-#include "stdbool.h"
-#include "stdio.h"
-#include "string.h"
-#include "limits.h"
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
+
+# include "libft.h"
+# include "stdbool.h"
 
 typedef struct s_stack {
 	int				nbr;
@@ -39,3 +37,8 @@ void	push(t_var *a, t_var *b, char *mv);
 void	swap(t_var *a, char *mv);
 void	rrotate(t_var *a, char *mv);
 void	rotate(t_var *a, char *mv);
+
+// checkers move
+void	move_it(char *move, t_var *var_a, t_var *var_b);
+
+#endif
