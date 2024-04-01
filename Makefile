@@ -34,4 +34,6 @@ fclean :
 	rm -fr push_swap
 	rm -fr checker
 
-.PHONY : bonus
+re : fclean all
+
+.PHONY : bonus all clean fclean
