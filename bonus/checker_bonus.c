@@ -6,7 +6,7 @@
 /*   By: nbenyahy <nbenyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 09:09:04 by nbenyahy          #+#    #+#             */
-/*   Updated: 2024/04/01 21:51:43 by nbenyahy         ###   ########.fr       */
+/*   Updated: 2024/04/03 17:55:17 by nbenyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int	is_move(char *move)
 		|| !ft_strncmp(move, "pb\n", ft_strlen(move)) 
 		|| !ft_strncmp(move, "ra\n", ft_strlen(move)) 
 		|| !ft_strncmp(move, "rb\n", ft_strlen(move)) 
+		|| !ft_strncmp(move, "rr\n", ft_strlen(move)) 
 		|| !ft_strncmp(move, "rra\n", ft_strlen(move)) 
 		|| !ft_strncmp(move, "rrb\n", ft_strlen(move)) 
 		|| !ft_strncmp(move, "rrr\n", ft_strlen(move)) 
-		|| !ft_strncmp(move, "ss\n", ft_strlen(move))
-		|| !ft_strncmp(move, "rr\n", ft_strlen(move)) 
 		|| !ft_strncmp(move, "sa\n", ft_strlen(move)) 
-		|| !ft_strncmp(move, "sb\n", ft_strlen(move)));
+		|| !ft_strncmp(move, "sb\n", ft_strlen(move))
+		|| !ft_strncmp(move, "ss\n", ft_strlen(move)));
 }
 
 bool	is_sorted(t_var *a)
