@@ -60,7 +60,8 @@ As you can see, this algorithm is quite efficient for low input sizes, however, 
 ## Visualization
 
 ![image](images/gui.png)
-In order to better understand what was going on with the algorithm for larger numbers, I used this visualization made by o-reo (https://github.com/elijahkash/push_swap_gui)
+
+In order to better understand what was going on with the algorithm for larger numbers, I used this visualization (https://github.com/elijahkash/push_swap_gui)
 
 ## Theory
 
