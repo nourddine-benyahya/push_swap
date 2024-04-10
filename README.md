@@ -23,7 +23,7 @@ I managed to get an average of 595 moves for 100 random numbers and an average o
 ## Results
 For **100 random numbers** this are the results (1000 tests):
 
-![Screenshot from 2023-03-01 01-43-04](https://user-images.githubusercontent.com/76222459/222609903-2d20733c-b746-4adb-9a0b-e551815d50f7.png)
+![Screenshot from 2023-03-01 01-43-04](images/100.png)
 
 The average was 595 moves.
 
@@ -31,7 +31,7 @@ The average was 595 moves.
 
 For **500 random numbers**  random numbers this are the results (1000 tests):
 
-![image](https://user-images.githubusercontent.com/76222459/222610262-48e181fb-3ef9-4782-abca-2f4feea6246f.png)
+![image](images/500.png)
 
 The average was 4806 moves.
 
@@ -39,27 +39,27 @@ The average was 4806 moves.
 
 For **1000 random numbers**  random numbers this are the results (50 tests):
 
-![image](https://user-images.githubusercontent.com/76222459/222610576-1bd6f740-d1f3-425e-b47b-7e7b5c960181.png)
+![image](images/1000.png)
 
 The average was 12281 moves.
 
 ---
 For **10000 random numbers**  random numbers this are the results (1 test):
 
-![image](https://user-images.githubusercontent.com/76222459/222628028-7e33c685-ab59-4fba-834e-2d20d4b3df99.png)
+![image](images/10000.png)
 
 It took, almost 15min to sort the numbers
 
 ---
 ## Time complexity of my algorithm
 
-![image](https://user-images.githubusercontent.com/76222459/222624670-04d91415-fdbf-46e7-b11c-d1ea6c39b667.png)
+![image](images/Ctime.png)
 
 As you can see, this algorithm is quite efficient for low input sizes, however, the processing of the algorithm is quite demanding, which means that after a certain input size, a behavior of O(n*n) is reached.
 
 ## Visualization
 
-![image](https://user-images.githubusercontent.com/76222459/222914342-4281002c-1bb6-4a37-b665-5807e7e027e7.png)
+![image](images/gui.png)
 In order to better understand what was going on with the algorithm for larger numbers, I used this visualization made by o-reo (https://github.com/elijahkash/push_swap_gui)
 
 ## Theory
@@ -67,7 +67,7 @@ In order to better understand what was going on with the algorithm for larger nu
 As this project consists of evaluating the performance of algorithms, I decided to study the main algorithms that existed from the least efficient to the most efficient.
 
 ## Big O notation
-![image](https://user-images.githubusercontent.com/76222459/222556250-18e3b442-38ee-4391-ac73-bb7520db8350.png)
+![image](images/bigO.png)
 
 It describes the worst-case scenario for the number of operations an algorithm takes as a function of the size of the input. The notation is used to classify algorithms according to how their running time or space requirements grow as the size of the input increases.
 
@@ -84,7 +84,7 @@ In programming, stability refers to the property of an algorithm that its output
 
 Selection sort is a simple sorting algorithm that works by repeatedly finding the minimum element from the unsorted part of the list and swapping it with the first element. The algorithm then moves on to the next unsorted element and repeats the process until the entire list is sorted.
 
-![0009-selection-sort-animation](https://user-images.githubusercontent.com/76222459/222594817-2dec6306-319a-4252-90c6-8195bfcd2c60.gif)
+![0009-selection-sort-animation](images/selection_Sort.gif)
 
 The time complexity of selection sort is O(n^2) in the worst and average case, but O(n) in the best case (when the array is already sorted). This is because for each element in the array, the algorithm must compare it with every other element in the array.
 
@@ -92,7 +92,7 @@ Time complexity: O(n^2)
 
 ### Insertion Sort (keep the deck in order)
 
-![0009-Dark_inverted_insertion_sorting](https://user-images.githubusercontent.com/76222459/222598048-dc963ef3-39cf-488d-81dd-6cb5cf45d098.gif)
+![0009-Dark_inverted_insertion_sorting](images/insertion_sort.gif)
 
 
 It iterates through the list, comparing each element to the elements that come before it, and shifting those elements to the right as necessary to make room for the current element. We can think of this algorithm as someone who plays cards and likes to keep his deck in order: whenever he receives a new card, he goes through the list from beginning to end (or vice versa), trying to place the card between an element with key below yours and one above yours.
@@ -108,7 +108,7 @@ Imagine a deck of cards and the goals is to sort them in ascending order. Is pos
 
 ### Bubble Sort
 
-![0009-bubble-sort-animation](https://user-images.githubusercontent.com/76222459/222599361-65f394ca-2c3a-4e6e-acc0-f7b68ac3f7ff.gif)
+![0009-bubble-sort-animation](images/Bubble_sort.gif)
 
 It repeatedly steps through the list to be sorted, compares each pair of adjacent items and swaps them if they are in the wrong order.
 
@@ -116,7 +116,7 @@ When we reach the end of the vector, we say that the element that is there (at t
 
 ### Shell Sort
 
-![0009-Shell_Sort_Algorithm](https://user-images.githubusercontent.com/76222459/222599520-a1e9feba-1a27-4463-a74a-9d0828681da5.gif)
+![0009-Shell_Sort_Algorithm](images/shell_sort.gif)
 
 Shell sort is a variation of the insertion sort algorithm that improves its efficiency by comparing elements that are farther apart from each other, before comparing elements that are closer together. This is done by using a gap value, also called the increment, that determines the distance between the elements that are being compared.
 
@@ -127,7 +127,7 @@ The time complexity of shell sort is O(n^2), but it is generally faster than bub
 ### Counting Sort
 
 
-![image](https://user-images.githubusercontent.com/76222459/222599719-243b07be-3dd7-4e6f-86e8-389483ba1e6e.png)
+![image](images/counting_sort.png)
 
 
 Counting Sort is a sorting algorithm that works by counting the number of occurrences of each element in an array and then using that information to place the elements in their correct positions. It is an efficient algorithm for sorting arrays with a small range of values, but it is not suitable for arrays with a large range of values or for arrays where the elements are not integers. The basic idea of counting sort is to create a count array for each element in the input array and use that count array to determine the position of each element in the sorted output array.
@@ -138,7 +138,7 @@ The time complexity of Counting Sort is O(n+k), where n is the number of element
 
 Radix sort is a non-comparative integer sorting algorithm that sorts data with integer keys by grouping the keys by the individual digits which share the same significant position and value. It works by starting from the least significant digit (LSD) and iteratively sorting the elements based on each digit until the most significant digit (MSD). Radix sort is efficient for sorting large numbers of integers and is often used as a subroutine in other sorting algorithms. It can sort integers in linear time, O(nk), where n is the number of integers and k is the number of digits in the integers.
 
-![0011-radix (1)](https://user-images.githubusercontent.com/76222459/222599523-7712a753-d677-41e0-883a-0ce78218e74f.gif)
+![0011-radix (1)](images/radix_sort.gif)
 
 Here's an example of radix sort being used to sort a list of integers:
 
@@ -176,11 +176,7 @@ Another example:
 
 Suppose we have an array [4, 5, 3, 7, 2]. We choose the pivot to be 4. We then partition the rest of the array into two sub-arrays: elements less than 4 [3, 2], and elements greater than 4 [5, 7]. We sort the sub-arrays recursively: [2, 3] and [5, 7]. Finally, we combine the sorted sub-arrays with the pivot to get [2, 3, 4, 5, 7], which is the fully sorted array.
 
-![image](https://user-images.githubusercontent.com/76222459/222600184-9fb0063a-87c0-4e83-962b-601e2f7eb21b.png)
-
-Another example:
-
-![image](https://user-images.githubusercontent.com/76222459/222600941-2babf6fb-2995-40b4-ad05-10c5a78d4a60.png)
+![image](images/quick_sort.png)
 
 
 The average time complexity of quick sort is O(n log n), where n is the number of elements in the array. This is because, on average, each partition splits the array roughly in half, leading to log n levels of recursion. At each level, O(n) time is spent on partitioning, so the total time complexity is O(n log n). In the worst case, if the pivot is always chosen poorly, such as always choosing the largest or smallest element, the time complexity can degrade to O(n^2). However, this worst case is rare in practice, and can be mitigated by using random pivot selection or other techniques.
@@ -189,7 +185,7 @@ https://youtu.be/XE4VP_8Y0BU
 
 ### Merge Sort
 
-![image](https://user-images.githubusercontent.com/76222459/222601269-34f1f885-e406-4823-a914-30b24cebcce0.png)
+![image](images/quick_sort.png)
 
 Merge sort is a divide-and-conquer algorithm that sorts an array by recursively dividing the array into smaller sub-arrays, sorting those sub-arrays, and then merging the sub-arrays back together in a sorted manner.
 
