@@ -20,6 +20,11 @@ The challenge is to find the shortest sequence of operations that accomplishes t
 
 I managed to get an average of 595 moves for 100 random numbers and an average of 4806 for 500 random numbers.
 
+## My Algorithm
+
+This explanation is made for an example of 10 elements, however, to organize a larger amount of numbers the procedure is exactly the same, without any changes.
+
+
 ## Results
 For **100 random numbers** this are the results (1000 tests):
 
